@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Barra de Progresso</h1>
+    <progress id="progressBar" max="100" value="0"></progress>
+    <span id="progressText">0%</span><br>
+    <button onclick="startProgress()">Iniciar Progresso</button>
+
+    <script>
+        function startProgress() {
+            var progreessBar = document.getElementById('progressBar');
+            var progressText = document.getElementById('progressText');
+            var value = 0;
+
+            var internal = setInterval(function () {
+                value += 10;
+                progreessBar.value = value;
+                progressText.innerText = value + "%"; // Atualiza o texto ao lado da barra
+
+                if (value >= progreessBar.max) { // usa progressBar.max corretamente
+                    clearInterval(internal); // Para o intervalo corretamente
+                    progressText.innerText = "Completo!";
+
+                }
+
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>
